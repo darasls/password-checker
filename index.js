@@ -5,9 +5,12 @@ function checkPasswordStrength(password) {
         return 
     }
 
+    let score = 0
+
     // RULE 1: 8 Characters
     if(password.length >= 8) {
         console.log('RULE 1 PASSED ✅')
+        score++
     } else {
         console.log('RULE 1 FAILED ❌')
     }
@@ -44,29 +47,39 @@ function checkPasswordStrength(password) {
 
     if(hasLowercaseChar) {
         console.log('Lowercase Character ✅')
+        score++
     } else {
         console.log('Missing Lowercase Character ❌')
     }
 
     if(hasUppercaseChar) {
         console.log('Uppercase Character ✅')
+        score++
     } else {
         console.log('Missing Uppercase Character ❌')
     }
 
     if(hasNumber) {
         console.log('Number ✅')
+        score++
     } else {
         console.log('Missing Number ❌')
     }
 
     if(hasSpecialChar) {
         console.log('Symbol ✅')
+        score++
     } else {
-        console.log('Missing Symbol ❌')
+        console.log('Missing Symbol (!, $) ❌')
     }
 
-
+    if(score == 5) {
+        console.log('YOU HAVE A STRONG PASSWORD 🟢')
+    } else if (score == 4 ) {
+        console.log('YOU HAVE A MODERATE PASSWORD 🟠')
+    } else {
+        console.log('YOU HAVE A WEAK PASSWORD 🔴')
+    }
 }
 
 // Collect User Password
