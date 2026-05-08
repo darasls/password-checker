@@ -1,88 +1,158 @@
 function checkPasswordStrength(password) {
-    //Check if password is null
-    if(!password) {
-        console.log('INVALID PASSWORD')
-        return 
+
+    // Check if password is null
+    if (!password) {
+        console.log('INVALID PASSWORD');
+        return;
     }
 
-    let score = 0
+    let score = 0;
 
-    // RULE 1: 8 Characters
-    if(password.length >= 8) {
-        console.log('RULE 1 PASSED ✅')
-        score++
+    // RULE 1: At least 8 characters
+    if (password.length >= 8) {
+        document.getElementById('rule-1-result').innerHTML =
+            '<img src="assets/password-strength-checker-correct.png" width="30px">';
+        score++;
     } else {
-        console.log('RULE 1 FAILED ❌')
+        document.getElementById('rule-1-result').innerHTML =
+            '<img src="assets/password-strength-checker-wrong.png" width="30px">';
+    }
+
+    let hasLowercaseChar = false;
+    let hasUppercaseChar = false;
+    let hasNumber = false;
+    let hasSpecialChar = false;
+
+    // Loop through password characters
+    for (let i = 0; i < password.length; i++) {
+
+        let char = password[i];
+
+        // Lowercase
+        if (char >= 'a' && char <= 'z') {
+            hasLowercaseChar = true;
+        }
+
+        // Uppercase
+        if (char >= 'A' && char <= 'Z') {
+            hasUppercaseChar = true;
+        }
+
+        // Number
+        if (char >= '0' && char <= '9') {
+            hasNumber = true;
+        }
+
+        // Special character
+        if (char == '!' || char == '$') {
+            hasSpecialChar = true;
+        }
     }
 
     // RULE 2: Lowercase
+    if (hasLowercaseChar) {
+        document.getElementById('rule-2-result').innerHTML =
+            '<img src="assets/password-strength-checker-correct.png" width="30px">';
+        score++;
+    } else {
+        document.getElementById('rule-2-result').innerHTML =
+            '<img src="assets/password-strength-checker-wrong.png" width="30px">';
+    }
 
     // RULE 3: Uppercase
+    if (hasUppercaseChar) {
+        document.getElementById('rule-3-result').innerHTML =
+            '<img src="assets/password-strength-checker-correct.png" width="30px">';
+        score++;
+    } else {
+        document.getElementById('rule-3-result').innerHTML =
+            '<img src="assets/password-strength-checker-wrong.png" width="30px">';
+    }
 
     // RULE 4: Number
+    if (hasNumber) {
+        document.getElementById('rule-4-result').innerHTML =
+            '<img src="assets/password-strength-checker-correct.png" width="30px">';
+        score++;
+    } else {
+        document.getElementById('rule-4-result').innerHTML =
+            '<img src="assets/password-strength-checker-wrong.png" width="30px">';
+    }
 
     // RULE 5: Symbol (!, $)
-
-    let hasLowercaseChar = false
-    let hasUppercaseChar = false
-    let hasNumber = false
-    let hasSpecialChar = false
-
-    // Iterate through each character of the password string
-    for(let i=0; i < password.length; i++) {
-        let char = password[i]
-        if(char >= 'a' && char <= 'z') {
-            hasLowercaseChar = true
-        }
-        if(char >= 'A' && char <= 'Z') {
-            hasUppercaseChar = true
-        }
-        if(char >= '0' && char <= '9') {
-            hasNumber = true
-        }
-        if(char == '!' || char == '$') {
-            hasSpecialChar = true
-        }
+    if (hasSpecialChar) {
+        document.getElementById('rule-5-result').innerHTML =
+            '<img src="assets/password-strength-checker-correct.png" width="30px">';
+        score++;
+    } else {
+        document.getElementById('rule-5-result').innerHTML =
+            '<img src="assets/password-strength-checker-wrong.png" width="30px">';
     }
 
-    if(hasLowercaseChar) {
-        console.log('Lowercase Character ✅')
-        score++
+    // RULE 6: Should not contain TEST or PASSWORD
+    let lowerPassword = password.toLowerCase();
+
+    if (
+        !lowerPassword.includes('test') &&
+        !lowerPassword.includes('password')
+    ) {
+        document.getElementById('rule-6-result').innerHTML =
+            '<img src="assets/password-strength-checker-correct.png" width="30px">';
+        score++;
     } else {
-        console.log('Missing Lowercase Character ❌')
+        document.getElementById('rule-6-result').innerHTML =
+            '<img src="assets/password-strength-checker-wrong.png" width="30px">';
     }
 
-    if(hasUppercaseChar) {
-        console.log('Uppercase Character ✅')
-        score++
+    // PROGRESS BAR
+    const percentage = Math.round((score / 6) * 100);
+    const bar = document.getElementById('strength-bar');
+
+    bar.style.width = percentage + "%";
+    bar.style.backgroundColor = "#520380";
+
+    if (percentage === 0) {
+
+        bar.innerText = "Waiting (0%)";
+        bar.className = "progress-bar";
+
+    } else if (percentage < 50) {
+
+        bar.innerText = `Weak (${percentage}%)`;
+        bar.className = "progress-bar";
+
+    } else if (percentage < 100) {
+
+        bar.innerText = `Moderate (${percentage}%)`;
+        bar.className = "progress-bar";
+
     } else {
-        console.log('Missing Uppercase Character ❌')
+
+        bar.innerText = `Strong (${percentage}%)`;
+        bar.className = "progress-bar";
     }
 
-    if(hasNumber) {
-        console.log('Number ✅')
-        score++
-    } else {
-        console.log('Missing Number ❌')
-    }
+    // SCORE RESULT
+    if (score == 6) {
 
-    if(hasSpecialChar) {
-        console.log('Symbol ✅')
-        score++
-    } else {
-        console.log('Missing Symbol (!, $) ❌')
-    }
+        document.getElementById('score-result').innerHTML =
+            '<span class="badge" style="background-color: #520380;">STRONG</span>';
 
-    if(score == 5) {
-        console.log('YOU HAVE A STRONG PASSWORD 🟢')
-    } else if (score == 4 ) {
-        console.log('YOU HAVE A MODERATE PASSWORD 🟠')
+    } else if (score > 3 && score < 6) {
+
+        document.getElementById('score-result').innerHTML =
+            '<span class="badge" style="background-color: #520380;">MODERATE</span>';
+
     } else {
-        console.log('YOU HAVE A WEAK PASSWORD 🔴')
+
+        document.getElementById('score-result').innerHTML =
+            '<span class="badge" style="background-color: #520380;">WEAK</span>';
     }
 }
 
 // Collect User Password
-const password = prompt("Enter your password")
-console.log(password)
-checkPasswordStrength(password)
+const password = prompt("Enter your password");
+
+console.log(password);
+
+checkPasswordStrength(password);

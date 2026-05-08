@@ -10,51 +10,86 @@
 <body>
     <div class="container mt-5">
 
+        <!-- TITLE -->
         <h1 class="py-4 text-white text-center">PASSWORD STRENGTH CHECKER</h1>
 
-            <ol class="list-group list-group-numbered">
+
+        <!-- LIST  -->
+            <ol class="list-group list-group">
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
-            <div class="fw-bold">RULE 1</div>
-            At least 8 characters
+            <div class="fw-bold" style="color: #520380;">Should contain at least 8 characters</div>
+            
             </div>
-            <img src="assets/password-strength-checker-correct.png" width="30px">
+            <span id="rule-1-result">
+                
+            </span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
-            <div class="fw-bold">RULE 2</div>
-            At least a lowercase character
+            <div class="fw-bold" style="color: #520380;">Should contain at least a lowercase character</div>
+            
             </div>
-            <img src="assets/password-strength-checker-wrong.png" width="30px">
+            <span id="rule-2-result">
+                
+            </span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
-            <div class="fw-bold">RULE 3</div>
-            At least a uppercase character
+            <div class="fw-bold" style="color: #520380;">Should contain at least an uppercase character</div>
+        
             </div>
-            <img src="assets/password-strength-checker-correct.png" width="30px">
+            <span id="rule-3-result">
+            
+            </span>
         </li>
          <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
-            <div class="fw-bold">RULE 4</div>
-            At least a number
+            <div class="fw-bold" style="color: #520380;">Should contain at least a number character</div>
+        
             </div>
-            <img src="assets/password-strength-checker-correct.png" width="30px">
+            <span id="rule-4-result">
+                
+            </span>
         </li>
          <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
-            <div class="fw-bold">RULE 5</div>
-            At least a symbol (!, $)
+            <div class="fw-bold" style="color: #520380;">Should contain at least a symbol (!, $)</div>
+            
             </div>
-            <img src="assets/password-strength-checker-correct.png" width="30px">
+            <span id="rule-5-result">
+                
+            </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+            <div class="fw-bold" style="color: #520380;">Should not contain TEST or PASSWORD</div>
+            
+            </div>
+            <span id="rule-6-result">
+                
+            </span>
         </li>
         </ol>
 
-        <h3 class="py-4 text-white text-center">YOUR PASSWORD IS <span class="badge text-bg-success">STRONG</span></h3>
+        <!-- PROGRESS BAR -->
+                <div class="progress mt-4" style="height: 30px;">
+            <div 
+                id="strength-bar" 
+                class="progress-bar" 
+                role="progressbar" 
+                style="width: 0%;">
+                Waiting (0%)
+            </div>
+        </div>
+
+        <!-- SCORE RESULT -->
+        <h3 class="py-4 text-white text-center">
+        YOUR PASSWORD IS 
+        <span id="score-result"></span>
+        </h3>
     </div>
     
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="index.js"></script>
