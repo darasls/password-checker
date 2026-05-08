@@ -150,9 +150,26 @@ function checkPasswordStrength(password) {
     }
 }
 
-// Collect User Password
-const password = prompt("Enter your password");
+    // Collect User Password
+    function handlePasswordCheck() {
 
-console.log(password);
+        const password = document.getElementById('password-input').value;
 
-checkPasswordStrength(password);
+        console.log(password);
+
+        checkPasswordStrength(password);
+    }
+
+    function togglePassword() {
+
+    const passwordInput = document.getElementById('password-input');
+
+    if (passwordInput.type === "password") {
+
+        passwordInput.type = "text";
+
+    } else {
+
+        passwordInput.type = "password";
+    }
+}
