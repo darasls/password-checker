@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strenght Checker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container mt-5">
+
+        <h1 class="py-4 text-white text-center">PASSWORD STRENGTH CHECKER</h1>
+
+            <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+            <div class="fw-bold">RULE 1</div>
+            At least 8 characters
+            </div>
+            <img src="assets/password-strength-checker-correct.png" width="30px">
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+            <div class="fw-bold">RULE 2</div>
+            At least a lowercase character
+            </div>
+            <img src="assets/password-strength-checker-wrong.png" width="30px">
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+            <div class="fw-bold">RULE 3</div>
+            At least a uppercase character
+            </div>
+            <img src="assets/password-strength-checker-correct.png" width="30px">
+        </li>
+         <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+            <div class="fw-bold">RULE 4</div>
+            At least a number
+            </div>
+            <img src="assets/password-strength-checker-correct.png" width="30px">
+        </li>
+         <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+            <div class="fw-bold">RULE 5</div>
+            At least a symbol (!, $)
+            </div>
+            <img src="assets/password-strength-checker-correct.png" width="30px">
+        </li>
+        </ol>
+
+        <h3 class="py-4 text-white text-center">YOUR PASSWORD IS <span class="badge text-bg-success">STRONG</span></h3>
+    </div>
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
